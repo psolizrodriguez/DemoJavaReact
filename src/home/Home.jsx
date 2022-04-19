@@ -1,18 +1,17 @@
 import React from 'react';
-
-import { messageService, getContactsList } from '../_services';
+import contactService from "../_services/contactService";
 
 function Home() {
     function refreshList() {
-        getContactsList();
+        contactService.getContactsList();
     }
 
     function clearList() {
-        messageService.clearList();
+        contactService.clearList();
     }
 
     function addContact() {
-        messageService.addContact();
+        contactService.addContact();
     }
 
     return (

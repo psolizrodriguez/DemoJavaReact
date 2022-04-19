@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { messageService, getContactsList  } from '../_services';
+import contactService from "../_services/contactService";
 import { Home } from '../home';
 
-function App() {
-    const [list, setList] = useState([]);
+function App(props) {
+    const [list, setList] = useState(props.list || []);
 
     useEffect(() => {
         // subscribe to home component messages
-        const subscription = messageService.onMessage().subscribe(list => {
+        const subscription = contactService.onMessage().subscribe(list => {
             if (list.contactList) {
                 setList(list.contactList);
             } else {
                 setList([]);
             }
         });
-        getContactsList();
+        contactService.getContactsList();
         return subscription.unsubscribe;
     }, []);
 
@@ -57,4 +57,4 @@ function App() {
     );
 }
 
-export { App };
+export default App;
