@@ -31,11 +31,16 @@ describe('Test for App component', () => {
         element = await shallow(<App list={contactsList}/>);
         expect(element).not.toBeNull();
     });
-    test('renders table when messageService.getContactsList has records', async () => {
+    test('renders personal data section properly', async () => {
         element = await shallow(<App list={contactsList}/>);
-        const listContacts = element.find('#contactTableBody');
-        expect(listContacts.find('tr').length).toBe(1);
-        expect(listContacts.find('tr td ').find('td')).toBe(1);
         expect(element).not.toBeNull();
+        const listContacts = element.find('#contactTableBody');
+        const tr = listContacts.find('tr');
+        expect(tr.length).toBe(1);
+        const text = tr.find('.personalData');
+        const result = "Email: " + contactsList[0].email + "\n" +
+            "Phone Number: " + contactsList[0].personalPhoneNumber + "\n" +
+            "Company: " + contactsList[0].company;
+        expect(text.prop("value")).toBe(result);
     });
 });

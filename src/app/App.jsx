@@ -43,7 +43,7 @@ function App(props) {
                                                 <div>{contact.name}</div>
                                                 <img className="listPreview" src={'http://localhost:8080/contact/profilePicture/' + contact.contactId}/>
                                             </td>
-                                            <td><textarea readOnly={true} value={'Email: ' + contact.email + '\nPhone Number: ' + contact.personalPhoneNumber + '\nCompany: ' + contact.company}/></td>
+                                            <td><textarea className="personalData" readOnly={true} value={'Email: ' + contact.email + '\nPhone Number: ' + contact.personalPhoneNumber + '\nCompany: ' + contact.company}/></td>
                                             <td><textarea readOnly={true} value={contact.address.street + " " + contact.address.unit + "\n" + contact.address.city + " " + contact.address.state + ", " + contact.address.zip} /></td>
                                         </tr>)}
                                 </tbody>
